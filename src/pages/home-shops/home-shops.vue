@@ -1,13 +1,15 @@
 <template>
   <div class="home-shops">
     <!-- 头部 -->
-    <TopHeader :title="title" :mapIcon="true" :isLeft="false" :isRight="true" @chooseLocation="chooseLocation" />
+    <TopHeader :title="location" :mapIcon="true" :isLeft="false" :isRight="true" @chooseLocation="chooseLocation" />
   </div>
 </template>
 
 <script>
 //组件
 import TopHeader from "base/top-header/top-header";
+//js配置
+import { mapGetters } from "vuex";
 
 export default {
   data() {
@@ -18,9 +20,12 @@ export default {
   components: {
     TopHeader,
   },
+  computed: {
+      ...mapGetters(["location"]),
+  },
   methods: {
     chooseLocation(){
-      console.log(11)
+        this.$router.push("/address")
     }
   }
 };

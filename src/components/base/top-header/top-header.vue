@@ -1,7 +1,7 @@
 <template>
   <div class="top-header" @click="handlerClick">
     <!-- 左侧 -->
-    <div class="left" v-show="isLeft">
+    <div class="left" v-show="isLeft" @click.stop="back">
       <i class="iconfont icon-arrow-left-bold"></i>
     </div>
     <!-- 中间 -->
@@ -46,6 +46,9 @@ export default {
       },
       enterUserCenter(){
           this.$router.push("/msite");
+      },
+      back(){
+          this.$router.back();
       }
   },
 };
@@ -54,10 +57,9 @@ export default {
 <style lang="scss" scoped>
 @import "style/mixin.scss";
 .top-header {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
-  right: 0;
   height: $head-height;
   background: $color-theme;
   display: flex;
