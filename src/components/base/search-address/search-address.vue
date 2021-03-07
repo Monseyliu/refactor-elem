@@ -1,21 +1,17 @@
 <template>
   <div class="search-address">
     <div class="search-wrapper">
-      <div class="city">
+      <div class="city" v-show="showLeft">
         <span class="text">{{ currentCity }}</span>
         <i class="iconfont icon-arrow-down-bold"></i>
       </div>
       <div class="search">
         <i class="icon icon-search"></i>
-        <input
-          v-model="searchValue"
-          type="text"
-          placeholder="小区/写字楼/学校"
-        />
+        <input v-model="searchValue" type="text" :placeholder="placeholder" />
       </div>
     </div>
     <!-- lading组件 -->
-    <div class="loading-content" v-show="searchValue && !searchList.length ">
+    <div class="loading-content" v-show="searchValue && !searchList.length">
       <Loading />
     </div>
   </div>
@@ -39,8 +35,19 @@ export default {
       default: "北京市",
     },
     searchList: {
-        type: Array
-    }
+      type: Array,
+      default() {
+        return [];
+      },
+    },
+    showLeft: {
+      type: Boolean,
+      default: true,
+    },
+    placeholder: {
+      type: String,
+      default: "小区/写字楼/学校",
+    },
   },
   watch: {
     searchValue(newValue) {

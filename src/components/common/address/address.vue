@@ -46,7 +46,7 @@ export default {
         // 实例化Autocomplete
         var autoOptions = {
           //city 限定城市，默认全国
-          city: "全国",
+          city: self.currentCity,
         };
         var autoComplete = new AMap.Autocomplete(autoOptions);
         autoComplete.search(value, function (status, result) {
@@ -59,7 +59,7 @@ export default {
       }
     },
     selectLocation(item) {
-      let location = item.district + item.address;
+      let location = item.name+'·'+item.district + item.address;
       this.SetLocation(location);
       this.$router.push("/home")
     },

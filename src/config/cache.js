@@ -1,7 +1,7 @@
 import strorage from "good-storage";
 
 const CURRENT_CITY = "_currentcity_";
-const LOCATION = "_location";
+const LOCATION = "_location_";
 
 //城市定位
 export function SetCity(city) {
@@ -17,7 +17,7 @@ export function loadCity(){
     return strorage.get(CURRENT_CITY, "成都市");
 }
 export function loadLocation(){
-    return strorage.get(CURRENT_CITY, "四川省成都市成华区保和万象街道办66号");
+    return strorage.get(LOCATION, "四川省成都市成华区保和万象街道办66号");
 }
 
 

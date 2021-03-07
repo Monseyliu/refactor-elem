@@ -81,6 +81,7 @@ export default {
     }
   }
   .right {
+    margin-right: .1rem;
     i {
       font-size: $font-size-large-x;
     }
