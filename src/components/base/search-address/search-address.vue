@@ -1,7 +1,7 @@
 <template>
   <div class="search-address">
     <div class="search-wrapper">
-      <div class="city" v-show="showLeft">
+      <div class="city" v-show="showLeft" @click="selectCity">
         <span class="text">{{ currentCity }}</span>
         <i class="iconfont icon-arrow-down-bold"></i>
       </div>
@@ -10,15 +10,10 @@
         <input v-model="searchValue" type="text" :placeholder="placeholder" />
       </div>
     </div>
-    <!-- lading组件 -->
-    <div class="loading-content" v-show="searchValue && !searchList.length">
-      <Loading />
-    </div>
   </div>
 </template>
 
 <script>
-import Loading from "base/loading/loading";
 export default {
   data() {
     return {
@@ -26,19 +21,10 @@ export default {
       timer: null,
     };
   },
-  components: {
-    Loading,
-  },
   props: {
     currentCity: {
       type: String,
       default: "北京市",
-    },
-    searchList: {
-      type: Array,
-      default() {
-        return [];
-      },
     },
     showLeft: {
       type: Boolean,
@@ -59,7 +45,11 @@ export default {
       }, 200);
     },
   },
-  methods: {},
+  methods: {
+    selectCity() {
+      this.$router.push("/city");
+    },
+  },
 };
 </script>
 
@@ -93,9 +83,10 @@ export default {
     .search {
       flex: 1;
       i {
-        text-align: center;
         font-size: $font-size-small;
         font-weight: 600;
+        margin-left: 0.1rem;
+        line-height: 0.9rem;
       }
       input {
         @include clearBtn;
@@ -103,9 +94,6 @@ export default {
         width: 80%;
       }
     }
-  }
-  .loading-content {
-    @include loading-center;
   }
 }
 </style>

@@ -60,6 +60,7 @@ export default {
   position: relative;
   top: 0;
   left: 0;
+  right: 0;
   height: $head-height;
   background: $color-theme;
   display: flex;

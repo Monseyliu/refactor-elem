@@ -12,6 +12,7 @@ const Msite = () => import("pages/msite/msite")
 //一级路由
 const Login = () => import("common/login/login")
 const Address = () => import("common/address/address")
+const City = () => import("common/city/city")
 
 
 
@@ -28,7 +29,8 @@ const routes = [
     ]
   },
   { path: '/login', component: Login },
-  { path: '/address', component: Address }
+  { path: '/address', component: Address },
+  { path: '/city', component: City }
 ]
 
 const router = new VueRouter({

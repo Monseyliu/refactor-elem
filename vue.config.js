@@ -3,16 +3,20 @@ const resolve = dir => path.join(__dirname, dir);
 
 module.exports = {
     devServer: {
-       proxy: {
-           '/api': {
-               target: 'https://c.iwanmen.com/element/api/',
-               ws: true,
-               changeOrigin: true,
-               pathRewrite: {
-                   '^api': ''
-               }
-           }
-       }
+        proxy: {
+            // 配置跨域
+            '/api': {
+                target: 'https://c.iwanmen.com/element/api/',
+                ws: true,
+                changOrigin: true,
+                pathRewrite: {
+                    '^/api': ''
+                }
+            }
+        },
+        before: app => {
+
+        }
     },
     chainWebpack: config => {
         config.resolve.alias

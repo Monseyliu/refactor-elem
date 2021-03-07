@@ -8,7 +8,7 @@
         @click="select(item)"
       >
         <div class="title">{{ item.name }}</div>
-        <div class="desc">
+        <div class="desc" >
           {{ item.district }}{{ item.address.length ? item.address : "" }}
         </div>
       </li>
